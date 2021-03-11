@@ -8,3 +8,5 @@
 圈X脚本规则整理合并
 
 感谢各位大佬的付出……
+
+订阅地址：https://raw.githubusercontent.com/xbt370/Collection/master/Rules/Xbt370.conf
