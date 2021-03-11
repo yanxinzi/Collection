@@ -2,7 +2,6 @@
 # 仅IP规则，另需添加域名规则使用
 # 适用于quantumultX代理服务器不支持udp-relay添加，默认direct
 # 支持udp-relay的也需添加，默认direct,可自行修改策略偏好
-# 仅域名规则，需另添加IP规则使用
 # 远程分流规则，两条规则需同时添加搭配使用
 # 域名规则
 # https://raw.githubusercontent.com/xbt370/Collection/master/Filter/Clubhouse.list
