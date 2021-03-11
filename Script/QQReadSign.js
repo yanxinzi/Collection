@@ -25,47 +25,14 @@ QQ阅读APP 签到可以获🉐️金币兑换现金
 
 
 
-小火箭:签到获取ck
-QQ阅读APP = type=http-request,script-path=QQReadSign.js,pattern=^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/*,max-size=131072,requires-body=true,timeout=10,enable=true
-
-定时 QQ阅读APP = type=cron,script-path=QQReadSign.js,cronexpr="0 0 0 * * *",timeout=10,enable=true
-
-
-
-
-
-
-surge:签到获取ck
-QQ阅读APP = type=http-request,pattern=^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/*,requires-body=1,max-size=0,script-path=QQReadSign.js
-
-定时 QQ阅读APP = type=cron,cronexp=0 10 0 * * *,script-path=QQReadSign.js
-
-
-
-
-
 圈x:签到获取ck
-^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/* url script-request-header QQReadSign.js
+^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/* url script-request-header https://raw.githubusercontent.com/xbt370/Collection/master/Script/QQReadSign.js
 
-定时 0 10 0 * * * QQReadSign.js, tag=QQ阅读APP, enabled=true
-
-
-
-
-
-
-loon:签到获取ck
-http-request ^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/* script-path=QQReadSign.js, requires-body=true, timeout=10, tag=QQ阅读APP
-
-
-定时 cron "0 10 0 * * *" script-path=QQReadSign.js 
-
+定时 10 0 * * * https://raw.githubusercontent.com/xbt370/Collection/master/Script/QQReadSign.js, tag=QQ阅读APP, enabled=true
 
 
 
 MITM=commontgw6.reader.qq.com, eventv3.reader.qq.com
-
-
 
 
 
