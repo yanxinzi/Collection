@@ -1,10 +1,10 @@
 # > Clubhouse
-#仅域名规则，需另添加IP规则使用
-#远程分流规则，两条规则需同时添加搭配使用
-#域名规则
+# 仅域名规则，需另添加IP规则使用
+# 远程分流规则，两条规则需同时添加搭配使用
+# 域名规则
 # https://raw.githubusercontent.com/xbt370/Collection/master/Filter/Clubhouse.list
-#IP规则
-# https://raw.githubusercontent.com 
+# IP规则
+# https://raw.githubusercontent.com/xbt370/Collection/master/Filter/Clubhouse_IP.list 
 
 DOMAIN-SUFFIX,clubhouseapi.com,Clubhouse
 DOMAIN-SUFFIX,joinclubhouse.com,Clubhouse
