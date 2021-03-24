@@ -1,8 +1,8 @@
 /* ziye 
-github地址 https://github.com/ziye11
+github地址 https://github.com/6Svip120apk69
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
+boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ziye.boxjs.json
 
 转载请备注个名字，谢谢
 
@@ -17,6 +17,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.
 3.2-3 增加10分钟限速，修复用户名判定，修复视频助力
 3.3 完善提现判定，修复睡觉，解决资讯赚报错问题
 3.4 取消限速
+3.8 替换为循环获取ck
 
 ⚠️ 时间设置    0,30 0-23 * * *    每天 25次以上就行 
 
@@ -41,15 +42,15 @@ hostname=yuedongzu.yichengw.cn,
 
 ############## 圈x
 #悦动族获取TOKEN
-https:\/\/yuedongzu\.yichengw\.cn\/* url script-request-header https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/yuedongzu.js
+https:\/\/yuedongzu\.yichengw\.cn\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/yuedongzu.js
 
 ############## loon
 #悦动族获取TOKEN
-http-response https:\/\/yuedongzu\.yichengw\.cn\/* script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/yuedongzu.js, requires-body=1,max-size=0, tag=悦动族获取TOKEN
+http-response https:\/\/yuedongzu\.yichengw\.cn\/* script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/yuedongzu.js, requires-body=1,max-size=0, tag=悦动族获取TOKEN
 
 ############## surge
 #悦动族获取TOKEN
-悦动族获取TOKEN = type=http-response,pattern=https:\/\/yuedongzu\.yichengw\.cn\/*,script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/yuedongzu.js
+悦动族获取TOKEN = type=http-response,pattern=https:\/\/yuedongzu\.yichengw\.cn\/*,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/yuedongzu.js
 
 
 */
@@ -127,11 +128,38 @@ function GetCookie() {
     }
     if ($request && $request.url.indexOf("profile") >= 0) {
         const yuedongzutokenVal = $request.headers.Authorization;
-        if (yuedongzutokenVal) $.setdata(yuedongzutokenVal, "yuedongzutoken" + $.idx);
-        $.log(
-            `[${$.name + $.idx}] 获取yuedongzutokenVal✅: 成功,yuedongzutokenVal: ${yuedongzutokenVal}`
-        );
-        $.msg($.name + $.idx, `获取yuedongzutokenVal: 成功🎉`, ``);
+        if (yuedongzutokenVal) {
+            cookie()
+
+            function cookie() {
+                bodys = $.getdata('yuedongzutoken' + $.idx);
+                 if (bodys) {
+                    if (bodys.indexOf(yuedongzutokenVal) >= 0) {
+                        $.log(
+                            `[${$.name + $.idx}] yuedongzutokenVal已存在✅: yuedongzutokenVal: ${yuedongzutokenVal}`
+                        );
+                        $.msg($.name + $.idx, `yuedongzutokenVal已存在: 🎉`, ``);
+                        $.done();
+                    } else if ($.idx == '') {
+                        $.idx = 2
+                        cookie()
+                    } else {
+                        $.idx = $.idx + 1
+                        cookie()
+                    }
+                } else {
+                    {
+                        $.setdata(yuedongzutokenVal, "yuedongzutoken" + $.idx);
+                        $.log(
+                            `[${$.name + $.idx}] 获取yuedongzutokenVal✅: 成功,yuedongzutokenVal: ${yuedongzutokenVal}`
+                        );
+                        $.msg($.name + $.idx, `获取yuedongzutokenVal: 成功🎉`, ``);
+
+                        $.done();
+                    }
+                };
+            }
+        }
     }
 }
 console.log(

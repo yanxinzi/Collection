@@ -3,94 +3,59 @@ github地址 https://github.com/6Svip120apk69
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
 boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ziye.boxjs.json
+
 转载请备注个名字，谢谢
 
-⚠️芝嫲视频
+⚠️QQ阅读APP
+请点击前往下载  https://apps.apple.com/cn/app/qq%E9%98%85%E8%AF%BB-%E7%9C%8B%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%85%A8%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E9%98%85%E8%AF%BB%E7%A5%9E%E5%99%A8/id487608658
+或者自行下载  
 
-
-2.13 制作
-2.15 修复刷新问题,修复部分问题,点夺宝获取ck
-2.24 增加自动提现，需要自行获取对应数值的body，并填写CASH变量
-2.24-2 修复刷新错误，务必更新
-2.25 修复版本更新带来的晶石收取问题
+2.19 制作
+2.20 调整ck获取方式
+2.20-2 满15提现，请先绑定好手机号
 3.8 替换为循环获取ck
 
 ⚠️一共1个位置 1个ck  👉 1条 Secrets
 多账号换行
 
-点击 https://h5.sxsjyzm.com/sesameH5/public/sesameLogin/register.html?onlyid=613647529 下载APP
+第一步 添加  hostname=iostgw6.reader.qq.com,newios.reader.qq.com,
 
-或者商店搜索 芝嫲视频 邀请码613647529
+第二步 添加url重写 
+登录QQ阅读APP   获取url
 
-谢谢支持
-
-
-第一步 添加  hostname=api.sxsjyzm.com,
-
-第二步 添加body重写 
-
-点击夺宝   获取body
-
-
-zhimabodyVal 👉ZM_zhimabody
-zhimatxbodyVal 👉ZM_zhimatxbody
-
-CASH 👉ZM_CASH   可设置0.3 0.5 1 5 10 30 50 100 等等，设置完后自行获取对应body
-
-
+QQreadurlVal 👉QQ_QQreadURL
 
 ⚠️主机名以及重写👇
-
-时间建议设置一小时一次   如 0 * * * *
-
-hostname=api.sxsjyzm.com,
-
-
+hostname=iostgw6.reader.qq.com,newios.reader.qq.com,
 
 ############## 圈x
-
-#芝嫲视频获取body
-https:\/\/api\.sxsjyzm\.com\/* url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/zhima.js   
+#QQ阅读APP获取url
+https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*) url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/QQread.js   
 
 ############## loon
-#芝嫲视频获取body
-http-request https:\/\/api\.sxsjyzm\.com\/* script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/zhima.js,requires-body=true, tag=芝嫲视频获取body
+#QQ阅读APP获取url
+http-request https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*) script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/QQread.js, requires-header=true, tag=QQ阅读APP获取url
 
 ############## surge
+#QQ阅读APP获取url
+QQ阅读APP获取url = type=http-request,pattern=https:\/\/(iostgw6\.reader\.qq\.com\/*||newios\.reader\.qq\.com\/*),script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/QQread.js
 
-#芝嫲视频获取body
-芝嫲视频获取body = type=http-request,pattern=https:\/\/api\.sxsjyzm\.com\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/zhima.js 
-
-
-
- 
 */
-
-
-
-
-const $ = Env("芝嫲视频");
-$.idx = ($.idx = ($.getval('zhimaSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
+const $ = Env("QQ阅读APP");
+$.idx = ($.idx = ($.getval('QQreadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
-const COOKIE = $.isNode() ? require("./zhimaCOOKIE") : ``;
+const COOKIE = $.isNode() ? require("./QQreadCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
 $.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
-const zhimabodyArr = [];
-let zhimabodyVal = ``;
-let middlezhimabody = [];
 
-const zhimatxbodyArr = [];
-let zhimatxbodyVal = ``;
-let middlezhimatxbody = [];
+const QQreadurlArr = [];
+let QQreadurlVal = ``;
+let middleQQreadURL = [];
 
-if ($.isNode()) {
-    // 没有设置 ZM_CASH 则默认为 0 不提现
-    CASH = process.env.ZM_CASH || 0;
-}
 
-if ($.isNode() && process.env.ZM_zhimabody) {
+if ($.isNode() && process.env.QQ_QQreadURL) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
     console.log(
         `============ cookies分隔符为：${JSON.stringify(
@@ -98,81 +63,58 @@ if ($.isNode() && process.env.ZM_zhimabody) {
     )} =============\n`
     );
     if (
-        process.env.ZM_zhimabody &&
-        process.env.ZM_zhimabody.indexOf(COOKIES_SPLIT) > -1
+        process.env.QQ_QQreadURL &&
+        process.env.QQ_QQreadURL.indexOf(COOKIES_SPLIT) > -1
     ) {
-        middlezhimabody = process.env.ZM_zhimabody.split(COOKIES_SPLIT);
+        middleQQreadURL = process.env.QQ_QQreadURL.split(COOKIES_SPLIT);
     } else {
-        middlezhimabody = process.env.ZM_zhimabody.split();
-    }
-
-    if (
-        process.env.ZM_zhimatxbody &&
-        process.env.ZM_zhimatxbody.indexOf(COOKIES_SPLIT) > -1
-    ) {
-        middlezhimatxbody = process.env.ZM_zhimatxbody.split(COOKIES_SPLIT);
-    } else {
-        middlezhimatxbody = process.env.ZM_zhimatxbody.split();
+        middleQQreadURL = process.env.QQ_QQreadURL.split();
     }
 }
-if (COOKIE.zhimabodyVal) {
-    ZM_COOKIES = {
-        "zhimabodyVal": COOKIE.zhimabodyVal.split('\n'),
-        "zhimatxbodyVal": COOKIE.zhimatxbodyVal.split('\n'),
+if (COOKIE.QQreadurlVal) {
+    QQ_COOKIES = {
+        "QQreadurlVal": COOKIE.QQreadurlVal.split('\n'),
     }
-    Length = ZM_COOKIES.zhimabodyVal.length;
+    Length = QQ_COOKIES.QQreadurlVal.length;
 }
-if (!COOKIE.zhimabodyVal) {
+if (!COOKIE.QQreadurlVal) {
     if ($.isNode()) {
-        Object.keys(middlezhimabody).forEach((item) => {
-            if (middlezhimabody[item]) {
-                zhimabodyArr.push(middlezhimabody[item]);
-                zhimatxbodyArr.push(middlezhimatxbody[item]);
+        Object.keys(middleQQreadURL).forEach((item) => {
+            if (middleQQreadURL[item]) {
+                QQreadurlArr.push(middleQQreadURL[item]);
             }
         });
-
     } else {
-        zhimabodyArr.push($.getdata("zhimabody"));
-        zhimatxbodyArr.push($.getdata("zhimatxbody"));
+        QQreadurlArr.push($.getdata("QQreadurl"));
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-        if ("zhimaCASH") {
-            CASH = $.getval("zhimaCASH") || '0';
-        }
-        let zhimaCount = ($.getval('zhimaCount') || '1') - 0;
-        for (let i = 2; i <= zhimaCount; i++) {
-            if ($.getdata(`zhimabody${i}`)) {
-                zhimabodyArr.push($.getdata(`zhimabody${i}`));
-                zhimatxbodyArr.push($.getdata(`zhimatxbody${i}`));
-
-
+        let QQreadCount = ($.getval('QQreadCount') || '1') - 0;
+        for (let i = 2; i <= QQreadCount; i++) {
+            if ($.getdata(`QQreadurl${i}`)) {
+                QQreadurlArr.push($.getdata(`QQreadurl${i}`));
             }
         }
     }
-
-
-    if (zhimabodyArr == '') {
+    if (QQreadurlArr == '') {
         Length = 0
-    } else Length = zhimabodyArr.length
-
-
+    } else Length = QQreadurlArr.length
 }
 
-
 function GetCookie() {
-    if ($request && $request.url.indexOf("loot") >= 0 && $request.url.indexOf("index") >= 0) {
+    if ($request && $request.url.indexOf("userinfo") >= 0) {
 
-        const zhimabodyVal = $request.body;
-        if (zhimabodyVal) {
+
+        const QQreadurlVal = $request.url
+        if (QQreadurlVal) {
             cookie()
 
             function cookie() {
-                bodys = $.getdata('zhimabody' + $.idx);
+                bodys = $.getdata('QQreadurl' + $.idx);
                  if (bodys) {
-                    if (bodys.indexOf(zhimabodyVal) >= 0) {
+                    if (bodys.indexOf(QQreadurlVal) >= 0) {
                         $.log(
-                            `[${$.name + $.idx}] zhimabodyVal已存在✅: zhimabodyVal: ${zhimabodyVal}`
+                            `[${$.name + $.idx}] QQreadurlVal已存在✅: QQreadurlVal: ${QQreadurlVal}`
                         );
-                        $.msg($.name + $.idx, `zhimabodyVal已存在: 🎉`, ``);
+                        $.msg($.name + $.idx, `QQreadurlVal已存在: 🎉`, ``);
                         $.done();
                     } else if ($.idx == '') {
                         $.idx = 2
@@ -183,50 +125,11 @@ function GetCookie() {
                     }
                 } else {
                     {
-                        $.setdata(zhimabodyVal, "zhimabody" + $.idx);
+                        $.setdata(QQreadurlVal, "QQreadurl" + $.idx);
                         $.log(
-                            `[${$.name + $.idx}] 获取zhimabodyVal✅: 成功,zhimabodyVal: ${zhimabodyVal}`
+                            `[${$.name + $.idx}] 获取QQreadurlVal✅: 成功,QQreadurlVal: ${QQreadurlVal}`
                         );
-                        $.msg($.name + $.idx, `获取zhimabodyVal: 成功🎉`, ``);
-
-                        $.done();
-                    }
-                };
-
-            }
-
-        }
-
-    }
-
-    if ($request && $request.url.indexOf("userWxCashSubmit") >= 0) {
-        const zhimatxbodyVal = $request.body;
-        if (zhimatxbodyVal) {
-            cookie()
-
-            function cookie() {
-                bodys = $.getdata('zhimatxbody' + $.idx);
-                 if (bodys) {
-                    if (bodys.indexOf(zhimatxbodyVal) >= 0) {
-                        $.log(
-                            `[${$.name + $.idx}] zhimatxbodyVal已存在✅: zhimatxbodyVal: ${zhimatxbodyVal}`
-                        );
-                        $.msg($.name + $.idx, `zhimatxbodyVal已存在: 🎉`, ``);
-                        $.done();
-                    } else if ($.idx == '') {
-                        $.idx = 2
-                        cookie()
-                    } else {
-                        $.idx = $.idx + 1
-                        cookie()
-                    }
-                } else {
-                    {
-                        $.setdata(zhimatxbodyVal, "zhimatxbody" + $.idx);
-                        $.log(
-                            `[${$.name + $.idx}] 获取zhimatxbodyVal✅: 成功,zhimatxbodyVal: ${zhimatxbodyVal}`
-                        );
-                        $.msg($.name + $.idx, `获取zhimatxbodyVal: 成功🎉`, ``);
+                        $.msg($.name + $.idx, `获取QQreadurlVal: 成功🎉`, ``);
 
                         $.done();
                     }
@@ -236,7 +139,6 @@ function GetCookie() {
 
         }
     }
-
 }
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
@@ -248,8 +150,6 @@ console.log(
 console.log(
     `============ 共 ${Length} 个${$.name}账号=============\n`
 );
-
-
 //时间
 nowTimes = new Date(
     new Date().getTime() +
@@ -262,7 +162,7 @@ M = (nowTimes.getMonth() + 1 < 10 ? '0' + (nowTimes.getMonth() + 1) : nowTimes.g
 D = (nowTimes.getDate() < 10 ? '0' + (nowTimes.getDate()) : nowTimes.getDate());
 ddtime = Y + M + D;
 console.log(ddtime)
-
+//当前时间戳
 function tts(inputTime) {
     if ($.isNode()) {
         TTS = Math.round(new Date().getTime() +
@@ -271,9 +171,6 @@ function tts(inputTime) {
         new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000).toString();
     return TTS;
 };
-
-
-
 //当前10位时间戳
 function ts(inputTime) {
     if ($.isNode()) {
@@ -294,12 +191,9 @@ function daytime(inputTime) {
 };
 //时间戳格式化日期
 function time(inputTime) {
-
     if ($.isNode()) {
         var date = new Date(inputTime + 8 * 60 * 60 * 1000);
     } else var date = new Date(inputTime);
-
-
     Y = date.getFullYear() + '-';
     M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
     D = date.getDate() + ' ';
@@ -308,7 +202,9 @@ function time(inputTime) {
     s = date.getSeconds();
     return Y + M + D + h + m + s;
 };
+
 //随机udid 大写
+
 function udid() {
     var s = [];
     var hexDigits = "0123456789ABCDEF";
@@ -318,9 +214,11 @@ function udid() {
     s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
     s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
     s[8] = s[13] = s[18] = s[23] = "-";
+
     var uuid = s.join("");
     return uuid;
 }
+
 //随机udid 小写
 function udid2() {
     function S4() {
@@ -328,19 +226,8 @@ function udid2() {
     }
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-//编码
-function encodeUnicode(str) {
-    var res = [];
-    for (var i = 0; i < str.length; i++) {
-        res[i] = ("00" + str.charCodeAt(i).toString(16)).slice(-4);
-    }
-    return "\\u" + res.join("\\u");
-}
-//解码
-function decodeUnicode(str) {
-    str = str.replace(/\\/g, "%");
-    return unescape(str);
-}
+
+
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
     GetCookie()
@@ -362,40 +249,76 @@ async function all() {
     if (!Length) {
         $.msg(
             $.name,
-            '提示：⚠️请点击前往获取CK  https://h5.sxsjyzm.com/sesameH5/public/sesameLogin/register.html?onlyid=613647529\n',
-            'https://h5.sxsjyzm.com/sesameH5/public/sesameLogin/register.html?onlyid=613647529', {
-                "open-url": "https://h5.sxsjyzm.com/sesameH5/public/sesameLogin/register.html?onlyid=613647529"
+            '提示：⚠️请点击前往获取CK  https://apps.apple.com/cn/app/qq%E9%98%85%E8%AF%BB-%E7%9C%8B%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%85%A8%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E9%98%85%E8%AF%BB%E7%A5%9E%E5%99%A8/id487608658\n',
+            'https://apps.apple.com/cn/app/qq%E9%98%85%E8%AF%BB-%E7%9C%8B%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%85%A8%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E9%98%85%E8%AF%BB%E7%A5%9E%E5%99%A8/id487608658', {
+                "open-url": "https://apps.apple.com/cn/app/qq%E9%98%85%E8%AF%BB-%E7%9C%8B%E5%B0%8F%E8%AF%B4%E5%A4%A7%E5%85%A8%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E9%98%85%E8%AF%BB%E7%A5%9E%E5%99%A8/id487608658"
             }
         );
-        return;
+        $.done();
     }
     for (let i = 0; i < Length; i++) {
-
-        if (COOKIE.zhimabodyVal) {
-            zhimabodyVal = ZM_COOKIES.zhimabodyVal[i];
-            zhimatxbodyVal = ZM_COOKIES.zhimatxbodyVal[i];
+        if (COOKIE.QQreadurlVal) {
+            QQreadurlVal = QQ_COOKIES.QQreadurlVal[i];
         }
-        if (!COOKIE.zhimabodyVal) {
-            zhimabodyVal = zhimabodyArr[i];
-            zhimatxbodyVal = zhimatxbodyArr[i];
+        if (!COOKIE.QQreadurlVal) {
+            QQreadurlVal = QQreadurlArr[i];
         }
 
+        ywkey = QQreadurlVal.split('&')[0].split('=')[1]
+        ywguid = QQreadurlVal.split('&')[1].split('=')[1]
 
+        QQreadheaderVal = {
+            "Accept": "*/*",
+            "qrem": "0",
+            "qrtm": `${ts()}`,
+            "ua": "",
+            "rcmd": "1",
+            "Accept-Encoding": "gzip",
+            "net_type": "1",
+            "platform": "ioswp",
+            "youngerMode": "0",
+            "loginType": "2",
+            "text_type": "1",
+            "version": "qqreader_7.5.70.0354_iphone",
+            "Accept-Language": "zh-cn",
+            "User-Agent": "QQReaderUI/2558 CFNetwork/1206 Darwin/20.1.0",
+            "ywkey": `${ywkey}`,
+            "qimei": "",
+            "auditStatus": "0",
+            "Host": "commontgw6.reader.qq.com",
+            "ywguid": `${ywguid}`,
+            "Cache-Control": "no-cache",
+            "server_sex": "1",
+            "themeid": "2000",
+            "Connection": "keep-alive",
+            "IDFA": "",
+            "nosid": "1",
+            "gselect": "-1",
+        }
+
+        QQreadheaderVal.IDFA = udid()
+        QQreadheaderVal.qimei = udid2()
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
-
-
-        console.log(`\n${O}\n========== 【${O}】 ==========\n`);
-        $.message += `\n${O}\n========== 【${O}】 ==========\n`;
-        let cookie_is_live = await zhimasx(); //运行
-        if (!cookie_is_live) {
-            continue;
+        await user(); //用户信息
+        QQreadheaderVal.Host = 'eventv36.reader.qq.com'
+        await signindex(); //签到列表
+        await days(); //任务列表
+        if ($.signindex && $.signindex.data.finished == false) {
+            await sign(); //签到
         }
-        await zhima() //收取晶石       
-        if (nowTimes.getHours() === 17 && CASH >= 0.3) {
-            await zhimatx(); //提现
+        await extrabox(); //宝箱查询
+        if ($.extrabox && $.extrabox.data.openNum >= 1 && $.extrabox && $.extrabox.data.status == 0) {
+            await boxaward(); //宝箱奖励
         }
-        await zhimasx(); //刷新
+        if ($.days && $.days.data.watchVideo.videoCount < $.days.data.watchVideo.limit) {
+            await video(); //观看视频
+        }
+
+        if ($.days && $.days.data.userBalance.cash >= 15) {
+
+            await cash(); //提现
+        }
     }
 }
 //通知
@@ -418,50 +341,177 @@ function msgShow() {
         resolve()
     })
 }
-
-
-
-//zhimasx
-function zhimasx(timeout = 0) {
+//用户信息
+function user(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-
-
             let url = {
-                url: `https://api.sxsjyzm.com/api2/loot/index`,
-                headers: {
-                    'Accept': `*/*`,
-                    'wToken': ``,
-                    'Accept-Encoding': `gzip, deflate, br`,
-                    'Content-Type': `application/x-www-form-urlencoded`,
-                    'Connection': `keep-alive`,
-                    'Host': `api.sxsjyzm.com`,
-                    'User-Agent': `APP/5.0 CFNetwork/1206 Darwin/20.1.0`,
-                    'Accept-Language': `zh-cn`
-                },
-                body: zhimabodyVal,
+                url: `https://commontgw6.reader.qq.com/v7_5_7/nativepage/getAcctInfo`,
+                headers: QQreadheaderVal,
+
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 用户信息🚩: ${data}`);
+                    $.user = JSON.parse(data);
+                    if ($.user.code == 0) {
+                        console.log(`\n${O}\n========== 【${$.user.nick}】 ==========\n`);
+                        $.message += `\n${O}\n========== 【${$.user.nick}】 ==========\n`;
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//任务列表
+function days(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/initV4`,
+                headers: QQreadheaderVal,
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 任务列表🚩: ${data}`);
+                    $.days = JSON.parse(data);
+                    if ($.days.code == 0) {
+                        console.log(`【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`);
+                        $.message += `【今日金币】：${$.days.data.userBalance.coin}\n【现金余额】：${$.days.data.userBalance.cash}\n【视频任务】：${$.days.data.watchVideo.videoCount}/${$.days.data.watchVideo.limit}\n`
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//签到查询
+function signindex(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/queryPunchCardStatus`,
+                headers: QQreadheaderVal,
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 签到查询🚩: ${data}`);
+                    $.signindex = JSON.parse(data);
+                    if ($.signindex.code == 0 && $.signindex.data.finished == true) {
+                        console.log(`【签到查询】：已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`);
+                        $.message += `【签到查询】：已签到,已连续签到${$.signindex.data.continuousDays.length}天\n`;
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//今日签到
+function sign(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/punchCard_v2`,
+                headers: QQreadheaderVal,
             }
             $.post(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 芝嫲刷新🚩: ${data}`);
-
-                    $.zhimasx = JSON.parse(data);
-
-                    if ($.zhimasx.code == 200) {
-
-                        console.log(`【芝嫲刷新】:刷新成功\n`)
-                        $.message += `【芝嫲刷新】:刷新成功\n`
-                        resolve(true)
-
+                    if (logs) $.log(`${O}, 今日签到🚩: ${data}`);
+                    $.sign = JSON.parse(data);
+                    if ($.sign.code == 0) {
+                        console.log(`【今日签到】： 获得${$.sign.data.coinNum}金币\n`);
+                        $.message += `【今日签到】： 获得${$.sign.data.coinNum}金币\n`;
                     }
-                    if ($.zhimasx.code == 2970) {
-                        $.msg(O, time(Number(tts())) + "❌❌❌COOKIE失效");
-                        if ($.isNode()) {
-                            notify.sendNotify(O, time(Number(tts())) + "❌❌❌COOKIE失效");
-                        }
-                        resolve(false)
+                    if ($.sign.code == -6) {
+                        console.log(`【今日签到】：${$.sign.msg}\n`);
+                        $.message += `【今日签到】：${$.sign.msg}\n`;
                     }
-
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//观看视频
+function video(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/watchVideo`,
+                headers: QQreadheaderVal,
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 观看视频🚩: ${data}`);
+                    $.video = JSON.parse(data);
+                    if ($.video.code == 0) {
+                        console.log(`【观看视频】：奖励 ${$.video.data.watchVideoCoin}金币\n`);
+                        $.message += `【观看视频】：奖励 ${$.video.data.watchVideoCoin}金币\n`;
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//宝箱查询
+function extrabox(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/queryOpenBoxInfo`,
+                headers: QQreadheaderVal,
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 🚩: ${data}`);
+                    $.extrabox = JSON.parse(data);
+                    if ($.extrabox.code == 0) {
+                        console.log(`【宝箱查询】：剩余${$.extrabox.data.openNum}次\n`);
+                        $.message += `【宝箱查询】：剩余${$.extrabox.data.openNum}次\n`;
+                    }
+                } catch (e) {
+                    $.logErr(e, resp);
+                } finally {
+                    resolve()
+                }
+            })
+        }, timeout)
+    })
+}
+//宝箱奖励
+function boxaward(timeout = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let url = {
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/openBox`,
+                headers: QQreadheaderVal,
+            }
+            $.get(url, async (err, resp, data) => {
+                try {
+                    if (logs) $.log(`${O}, 宝箱奖励🚩: ${data}`);
+                    $.boxaward = JSON.parse(data);
+                    if ($.boxaward.code == 0) {
+                        console.log(`【宝箱奖励】：奖励 ${$.boxaward.data.coin}金币\n`);
+                        $.message += `【宝箱奖励】：奖励 ${$.boxaward.data.coin}金币\n`;
+                    }
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -472,99 +522,26 @@ function zhimasx(timeout = 0) {
     })
 }
 
-
-//zhima
-function zhima(timeout = 0) {
+//提现
+function cash(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
-
-
             let url = {
-                url: `https://api.sxsjyzm.com/api2/loot/supquickgetloot`,
-                headers: {
-                    'Accept': `*/*`,
-                    'wToken': ``,
-                    'Accept-Encoding': `gzip, deflate, br`,
-                    'Content-Type': `application/x-www-form-urlencoded`,
-                    'Connection': `keep-alive`,
-                    'Host': `api.sxsjyzm.com`,
-                    'User-Agent': `APP/5.0 CFNetwork/1206 Darwin/20.1.0`,
-                    'Accept-Language': `zh-cn`
-                },
-                body: zhimabodyVal,
+                url: `https://eventv36.reader.qq.com/activity/pkg11955/withdraw?type=1`,
+                headers: QQreadheaderVal,
             }
-            $.post(url, async (err, resp, data) => {
+            $.get(url, async (err, resp, data) => {
                 try {
-                    if (logs) $.log(`${O}, 芝嫲收晶石🚩: ${data}`);
-
-                    $.zhima = JSON.parse(data);
-
-
-                    if ($.zhima.code == 200) {
-
-                        console.log(`【晶石收取】:${time(Number(tts()))}领取晶石成功,冷却3小时\n`)
-                        $.message += `【晶石收取】:${time(Number(tts()))}领取晶石成功,冷却3小时\n`
-
-
+                    if (logs) $.log(`${O}, 提现🚩: ${data}`);
+                    $.cash = JSON.parse(data);
+                    if ($.cash.code == 0) {
+                        console.log(`【提现】：已成功提现15元\n`);
+                        $.message += `【提现】：已成功提现15元\n`;
                     }
-
-
-
-                    if ($.zhima.code == 1002) {
-
-                        console.log(`【晶石收取】:${$.zhima.mess},间隔3小时才能收取\n`)
-                        $.message += `【晶石收取】:${$.zhima.mess},间隔3小时才能收取\n`
-
+                    if ($.cash.code != 0) {
+                        console.log(`【提现】： ${$.cash.msg}\n`);
+                        $.message += `【提现】： ${$.cash.msg}\n`;
                     }
-
-
-                    if ($.zhima.code == 156) {
-
-                        console.log(`【晶石收取】:${$.zhima.mess}\n`)
-                        $.message += `【晶石收取】:${$.zhima.mess}\n`
-
-                    }
-
-
-                } catch (e) {
-                    $.logErr(e, resp);
-                } finally {
-                    resolve()
-                }
-            })
-
-        }, timeout)
-    })
-}
-
-
-//zhimatx
-function zhimatx(timeout = 0) {
-
-    return new Promise((resolve) => {
-
-        setTimeout(() => {
-            let url = {
-                url: `https://api.sxsjyzm.com/api2/loot/userWxCashSubmit`,
-                headers: {
-                    'Accept': `*/*`,
-                    'wToken': ``,
-                    'Accept-Encoding': `gzip, deflate, br`,
-                    'Content-Type': `application/x-www-form-urlencoded`,
-                    'Connection': `keep-alive`,
-                    'Host': `api.sxsjyzm.com`,
-                    'User-Agent': `APP/5.0 CFNetwork/1206 Darwin/20.1.0`,
-                    'Accept-Language': `zh-cn`
-                },
-                body: zhimatxbodyVal,
-            }
-            $.post(url, async (err, resp, data) => {
-                try {
-                    if (logs) $.log(`${O}, 芝嫲提现🚩: ${data}`);
-                    $.zhimatx = JSON.parse(data);
-
-                    console.log(`【芝嫲提现${CASH}元】:${$.zhimatx.mess}\n`)
-                    $.message += `【芝嫲提现${CASH}元】:${$.zhimatx.mess}\n`
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -574,8 +551,6 @@ function zhimatx(timeout = 0) {
         }, timeout)
     })
 }
-
-
 // prettier-ignore
 function Env(t, e) {
     class s {
