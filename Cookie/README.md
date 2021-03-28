@@ -1,3 +1,3 @@
-# cookie获取脚本
+# Cookie获取脚本
 
 各种Cookie获取
