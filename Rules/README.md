@@ -14,4 +14,4 @@ Task订阅推举  https://raw.githubusercontent.com/zwf234/rules/master/qixin.js
 
 优化分流规则，精简策略
 
-BoxJS改为使用http backend方式，访问地址改为http://127.0.0.1:9999，更新配置后请长按风车-更新，然后重启代理之后再开
+BoxJS改为使用http backend方式，访问地址改为http://127.0.0.1:9999，  更新配置后请长按风车-更新，然后重启代理之后再开
