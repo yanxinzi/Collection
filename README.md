@@ -18,4 +18,4 @@
 
 Lonn
 
-订 阅 地 址：https://github.com/xbt370/Collection/blob/master/Loon/XBT370.conf
+订 阅 地 址：https://raw.githubusercontent.com/xbt370/Collection/master/Loon/XBT370.conf
