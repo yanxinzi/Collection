@@ -12,4 +12,10 @@
  
 感谢各位大佬的付出……
 
+圈X
+
 订 阅 地 址：https://raw.githubusercontent.com/xbt370/Collection/master/Rules/Xbt370.conf
+
+Lonn
+
+订 阅 地 址：https://github.com/xbt370/Collection/blob/master/Loon/XBT370.conf
